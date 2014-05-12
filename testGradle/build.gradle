@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:1.0.2.RELEASE")
+}
+
+
+war {
+	baseName = 'gradle-test'
+	version = '0.1.1'
+}
+repositories {
+	maven { url "http://repo.spring.io/libs-milestone" }
+    mavenCentral()
+    
+}
+
+
+test {
+    systemProperties 'property': 'value'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
